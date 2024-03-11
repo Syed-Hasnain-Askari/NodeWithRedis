@@ -37,7 +37,7 @@ app.get("/get-post/", async (req, res) => {
         else{
             const response = await axios.get('https://jsonplaceholder.typicode.com/posts'); 
             await RedisWrapper.addPost("post",response.data)
-            RedisWrapper.setExpiry("post",3600); // Expires after 1 hour (3600 seconds)
+            RedisWrapper.setExpiry("post",30); // Expires after 1 hour (3600 seconds)
             return res.send({
                 "status": 200,
                 "response": response.data
